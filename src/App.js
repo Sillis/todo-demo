@@ -1,48 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function Item({ item, index, completeItem, removeItem }) {
-  return(
-    <div 
-      className="item"
-      style = {{ opacity: item.complete ? "0.2" : "" }}>
-        {item.label}
-        <div>
-          <button 
-            onClick={() => completeItem(index)}>
-              Complete
-          </button>
-          <button
-            onClick={() => removeItem(index)}>
-              Remove
-          </button>
-        </div>
-    </div>
-  )
-};
-
-function ItemForm({ addItem }) {
-  const [value, setValue] = React.useState("");
-  
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (!value) return;
-    addItem(value);
-    setValue("");
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        className="input"
-        value={value}
-        onChange={e => setValue(e.target.value)}
-      />
-    </form>
-  );
-}
+import ItemForm from './modules/itemForm';
+import Item from './modules/item';
 
 function App() {
   
